@@ -1,14 +1,20 @@
-const { mainMenu, pausa } = require("./helpers");
+const { mainMenu, pausa, readInput } = require("./helpers");
+const { Tasks } = require("./controller");
+const { read, save } = require("./db/store");
 console.clear();
 
 const main = async () => {
   let option = "";
+  const tasks = new Tasks();
+
+  //   const tasksFromDb = read();
 
   do {
     option = await mainMenu();
     switch (option) {
       case "1":
-        console.log("caso 1");
+        const description = await readInput("Description:");
+        tasks.createTask(description);
 
         break;
       case "2":
@@ -32,6 +38,9 @@ const main = async () => {
 
         break;
     }
+
+    save(tasks.arrayList);
+
     await pausa();
   } while (option !== "7");
 };
