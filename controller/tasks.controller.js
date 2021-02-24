@@ -42,6 +42,28 @@ class Tasks {
       console.log(`${index}. ${description} :: ${status}`);
     });
   }
+
+  listCompletePendingTask(completed) {
+    console.log();
+    this.arrayList.filter((task) => {
+      let count = 0;
+      const { description, complete } = task;
+      const status = complete ? "completed".green : "pending".red;
+      if (completed) {
+        if (complete) {
+          count += 1;
+          console.log(
+            `${(count + ".").green} ${description} :: ${complete.green} `
+          );
+        }
+      } else {
+        if (!complete) {
+          count += 1;
+          console.log(`${(count + ".").green} ${description} :: ${status}`);
+        }
+      }
+    });
+  }
 }
 
 module.exports = Tasks;

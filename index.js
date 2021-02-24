@@ -26,11 +26,11 @@ const main = async () => {
 
         break;
       case "3":
-        console.log("caso 3");
+        console.log(tasks.listCompletePendingTask(true));
 
         break;
       case "4":
-        console.log("caso 4");
+        console.log(tasks.listCompletePendingTask(false));
 
         break;
       case "5":
