@@ -1,6 +1,7 @@
-const { mainMenu, pausa, readInput } = require("./helpers");
+const { mainMenu, pausa, readInput, showCheckList } = require("./helpers");
 const { Tasks } = require("./controller");
 const { read, save } = require("./db/store");
+
 console.clear();
 
 const main = async () => {
@@ -34,7 +35,9 @@ const main = async () => {
 
         break;
       case "5":
-        console.log("caso 5");
+        const ids = await showCheckList(tasks.arrayList);
+        tasks.toggleStatus(ids);
+        console.log("Estatus actualizado");
 
         break;
       case "6":

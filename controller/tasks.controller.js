@@ -43,6 +43,7 @@ class Tasks {
     });
   }
 
+  // metodo para listar las tareas completadas y las pendientes
   listCompletePendingTask(completed) {
     console.log();
     this.arrayList.filter((task) => {
@@ -61,6 +62,21 @@ class Tasks {
           count += 1;
           console.log(`${(count + ".").green} ${description} :: ${status}`);
         }
+      }
+    });
+  }
+
+  toggleStatus(ids = []) {
+    ids.forEach((id) => {
+      const task = this._taskList[id];
+      if (!task.complete) {
+        task.complete = new Date().toISOString();
+      }
+    });
+
+    this.arrayList.forEach((task) => {
+      if (!ids.includes(task.id)) {
+        this._taskList[task.id].complete = null;
       }
     });
   }
