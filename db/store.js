@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const file = "./data.json";
+const file = "./db/data.json";
 
 // funcion para guardar data
 const save = (data) => {

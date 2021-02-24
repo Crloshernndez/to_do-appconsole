@@ -7,7 +7,11 @@ const main = async () => {
   let option = "";
   const tasks = new Tasks();
 
-  //   const tasksFromDb = read();
+  const tasksFromDb = read();
+
+  if (tasksFromDb) {
+    tasks.getDataFromStore(tasksFromDb);
+  }
 
   do {
     option = await mainMenu();
@@ -18,7 +22,7 @@ const main = async () => {
 
         break;
       case "2":
-        console.log("caso2");
+        console.log(tasks.getTaskList());
 
         break;
       case "3":
