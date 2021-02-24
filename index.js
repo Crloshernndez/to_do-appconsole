@@ -1,4 +1,11 @@
-const { mainMenu, pausa, readInput, showCheckList } = require("./helpers");
+const {
+  mainMenu,
+  pausa,
+  readInput,
+  showCheckList,
+  listDeleteTask,
+  confirmation,
+} = require("./helpers");
 const { Tasks } = require("./controller");
 const { read, save } = require("./db/store");
 
@@ -41,7 +48,14 @@ const main = async () => {
 
         break;
       case "6":
-        console.log("caso 6");
+        const id = await listDeleteTask(tasks.arrayList);
+        if (id !== "0") {
+          const confirm = await confirmation("Confirmas eliminar tarea?");
+          if (confirm) {
+            tasks.deleteTask(id);
+            console.log("Tarea borrada");
+          }
+        }
 
         break;
     }

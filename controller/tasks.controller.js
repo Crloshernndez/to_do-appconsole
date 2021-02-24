@@ -66,6 +66,7 @@ class Tasks {
     });
   }
 
+  //metodo para manejar el estado de las tareas
   toggleStatus(ids = []) {
     ids.forEach((id) => {
       const task = this._taskList[id];
@@ -79,6 +80,13 @@ class Tasks {
         this._taskList[task.id].complete = null;
       }
     });
+  }
+
+  // metodo para eliminar tarea
+  deleteTask(id) {
+    if (this._taskList[id]) {
+      delete this._taskList[id];
+    }
   }
 }
 
